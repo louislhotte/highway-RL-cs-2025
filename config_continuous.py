@@ -1,10 +1,9 @@
-import pickle
-
+# Config for continuous actions in highway-v0 env
 
 config_dict = {
     "observation": {
         "type": "OccupancyGrid",
-        "vehicles_count": 10,
+        "vehicles_count": 30, # Increased from 10
         "features": ["presence", "x", "y", "vx", "vy", "cos_h", "sin_h"],
         "features_range": {
             "x": [-100, 100],
@@ -17,17 +16,20 @@ config_dict = {
         "absolute": False,
     },
     "action": {
-        "type": "DiscreteMetaAction",
+        "type": "ContinuousAction",  # Continuous control (steering, acceleration)
+        # "steering_range": [-0.3, 0.3]
+        "longitudinal": True,  # Enable acceleration/braking control
+        "lateral": True,  # Enable steering control
+    
     },
-    "lanes_count": 4,
-    "vehicles_count": 15,
+    "lanes_count": 6,  # Increased from 4
+    "vehicles_count": 30, # Increased from 15
     "duration": 60,  # [s]
     "initial_spacing": 0,
     "collision_reward": -1,  # The reward received when colliding with a vehicle.
     "right_lane_reward": 0.5,  # The reward received when driving on the right-most lanes, linearly mapped to
     # zero for other lanes.
-    "high_speed_reward": 0.1,  # The reward received when driving at full speed, linearly mapped to zero for
-    # lower speeds according to config["reward_speed_range"].
+    "high_speed_reward": 0.5,  # Increased from 0.1 to try to encourage faster driving
     "lane_change_reward": 0,
     "reward_speed_range": [
         20,
@@ -45,9 +47,6 @@ config_dict = {
     "offscreen_rendering": False,
     "disable_collision_checks": True,
 }
-
-# with open("config.pkl", "wb") as f:
-#     pickle.dump(config_dict, f)
 
 # env = gym.make("highway-fast-v0", render_mode="rgb_array")
 # env.unwrapped.configure(config)
