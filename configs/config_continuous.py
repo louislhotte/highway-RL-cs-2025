@@ -3,7 +3,7 @@
 config_dict = {
     "observation": {
         "type": "OccupancyGrid",
-        "vehicles_count": 30, # Increased from 10
+        "vehicles_count": 10, # Increased from 10
         "features": ["presence", "x", "y", "vx", "vy", "cos_h", "sin_h"],
         "features_range": {
             "x": [-100, 100],
@@ -22,14 +22,14 @@ config_dict = {
         "lateral": True,  # Enable steering control
     
     },
-    "lanes_count": 6,  # Increased from 4
-    "vehicles_count": 30, # Increased from 15
+    "lanes_count": 4,  # Increased from 4
+    "vehicles_count": 15, # Increased from 15
     "duration": 60,  # [s]
     "initial_spacing": 0,
     "collision_reward": -1,  # The reward received when colliding with a vehicle.
     "right_lane_reward": 0.5,  # The reward received when driving on the right-most lanes, linearly mapped to
     # zero for other lanes.
-    "high_speed_reward": 0.5,  # Increased from 0.1 to try to encourage faster driving
+    "high_speed_reward": 0.1,  # Increased from 0.1 to try to encourage faster driving
     "lane_change_reward": 0,
     "reward_speed_range": [
         20,

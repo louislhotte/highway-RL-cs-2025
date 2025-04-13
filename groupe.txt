@@ -1,7 +1,0 @@
-CS RL Highway-env Project
-
-Groupe :
-LHOTTE Louis
-MARTIN-ROUVILLE Ambroise
-MARENGHI Paul-Alexandre
-SEGUIER Edouard
