@@ -56,6 +56,8 @@ class Net(nn.Module):
         self.net = nn.Sequential(
             nn.Linear(flattened_dim, hidden_size),
             nn.ReLU(),
+            nn.Linear(hidden_size, hidden_size),
+            nn.ReLU(),
             nn.Linear(hidden_size, n_actions),
         )
 
@@ -182,7 +184,8 @@ class DQN:
         )
 
     def reset(self):
-        hidden_size = 128
+        # hidden_size = 128
+        hidden_size = 256
 
         obs_size = self.observation_space.shape
         n_actions = self.action_space.n
