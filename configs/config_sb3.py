@@ -2,20 +2,30 @@ import pickle
 
 config_dict = {
     "observation": {
-        "type": "TimeToCollision"
+        "type": "OccupancyGrid",
+        "features": ['presence', 'on_road'],
+        "grid_size": [[-18, 18], [-18, 18]],
+        "grid_step": [3, 3],
+        "as_image": False,
+        "align_to_vehicle_axes": True
     },
     "action": {
-        "type": "DiscreteMetaAction"
+        "type": "ContinuousAction",
+        "longitudinal": False,
+        "lateral": True
     },
-    "incoming_vehicle_destination": None,
-    "duration": 11, # [s] If the environment runs for 11 seconds and still hasn't done(vehicle is crashed), it will be truncated. "Second" is expressed as the variable "time", equal to "the number of calls to the step method" / policy_frequency.
-    "simulation_frequency": 15,  # [Hz]
-    "policy_frequency": 1,  # [Hz]
-    "other_vehicles_type": "highway_env.vehicle.behavior.IDMVehicle",
-    "screen_width": 600,  # [px] width of the pygame window
-    "screen_height": 600,  # [px] height of the pygame window
-    "centering_position": [0.5, 0.6],  # The smaller the value, the more southeast the displayed area is. K key and M key can change centering_position[0].
-    "scaling": 5.5,
+    "simulation_frequency": 15,
+    "policy_frequency": 5,
+    "duration": 300,
+    "collision_reward": -1,
+    "lane_centering_cost": 4,
+    "action_reward": -0.3,
+    "controlled_vehicles": 1,
+    "other_vehicles": 1,
+    "screen_width": 600,
+    "screen_height": 600,
+    "centering_position": [0.5, 0.5],
+    "scaling": 7,
     "show_trajectories": False,
     "render_agent": True,
     "offscreen_rendering": False
