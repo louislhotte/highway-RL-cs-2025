@@ -7,7 +7,7 @@ config_dict = {
     "action": {
         "type": "ContinuousAction",  # Continuous control (steering, acceleration)
         "steering_range": [-0.3, 0.3],
-        "longitudinal": False,  # Enable acceleration/braking control
+        "longitudinal": True,  # Enable acceleration/braking control
         "lateral": True,  # Enable steering control
     },
 
